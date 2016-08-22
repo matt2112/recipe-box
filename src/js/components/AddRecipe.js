@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, ControlLabel, FormControl } from 'react-bootstrap';
 
-const Trigger = React.createClass({
-  getInitialState() {
-    return { show: false };
-  },
+class Trigger extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      show: false
+    }
+  }
 
   render() {
+    let open = () => this.setState({ show: true});
     let close = () => this.setState({ show: false});
 
     return (
-      <div className="modal-container" style={{height: 200}}>
+      <div>
         <Button
           bsStyle="primary"
           bsSize="large"
-          onClick={() => this.setState({ show: true})}
+          onClick={open}
         >
-          Launch contained modal
+          Add recipe
         </Button>
 
         <Modal
@@ -27,10 +32,14 @@ const Trigger = React.createClass({
           aria-labelledby="contained-modal-title"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">Contained Modal</Modal.Title>
+            <Modal.Title id="contained-modal-title">Add recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Elit est explicabo ipsum eaque dolorem blanditiis doloribus sed id ipsam, beatae, rem fuga id earum? Inventore et facilis obcaecati.
+            <ControlLabel>Recipe</ControlLabel>
+            <FormControl type="text" placeholder="Enter recipe name" />
+            <br />
+            <ControlLabel>Ingredients</ControlLabel>
+            <FormControl type="text" placeholder="Enter ingredients" />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={close}>Close</Button>
@@ -39,6 +48,6 @@ const Trigger = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default Trigger;

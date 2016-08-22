@@ -1,9 +1,12 @@
 $black: #222;
 
 .wrapper {
-    border: 2px solid $black;
     margin: 0 auto;
     max-width: 1000px;
+}
+
+.recipe-list {
+    border: 2px solid $black;
 }
 
 .accordion {
@@ -11,11 +14,4 @@ $black: #222;
 }
 .list {
     cursor: default;
-}
-
-.modal-container {
-  position: relative;
-}
-.modal-container .modal, .modal-container .modal-backdrop {
-  position: absolute;
 }

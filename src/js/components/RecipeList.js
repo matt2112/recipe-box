@@ -1,13 +1,12 @@
 import React from 'react';
-import { Well } from 'react-bootstrap';
 
 import Recipe from './Recipe';
 
 const RecipeList = () => {
     return (
-        <Well>
+        <div className="recipe-list">
             <Recipe />
-        </Well>
+        </div>
     )
 }
 
