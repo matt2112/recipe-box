@@ -1,6 +1,21 @@
 $black: #222;
 
-h1 {
-    color: $black;
-    background-color: red;
+.wrapper {
+    border: 2px solid $black;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.accordion {
+    cursor: pointer;
+}
+.list {
+    cursor: default;
+}
+
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
 }

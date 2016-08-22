@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import Title from './Title';
+import AddRecipe from './AddRecipe';
+import RecipeList from './RecipeList';
 
 class Layout extends Component {
 
@@ -16,7 +17,8 @@ class Layout extends Component {
     render() {
         return (
             <div className="wrapper">
-                <Title />
+                <RecipeList />
+                <AddRecipe />
             </div>
         );
     }
