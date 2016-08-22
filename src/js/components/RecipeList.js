@@ -2,10 +2,12 @@ import React from 'react';
 
 import Recipe from './Recipe';
 
-const RecipeList = () => {
+const RecipeList = (props) => {
     return (
         <div className="recipe-list">
-            <Recipe />
+            {props.recipes.map((recipe) => 
+                <Recipe key={recipe.id} recipe={recipe} />
+            )}
         </div>
     )
 }

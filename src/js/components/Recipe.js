@@ -1,14 +1,13 @@
 import React from 'react';
 import { Accordion, Panel } from 'react-bootstrap';
+import shortid from 'shortid';
 
-const Recipe = () => {
+const Recipe = (props) => {
     return (
         <Accordion className="accordion">
-            <Panel  bsStyle="warning" header="Recipe 1" eventKey="1">
+            <Panel  bsStyle="warning" header={props.recipe.name} eventKey="1">
                 <ul className="list">
-                    <li>Tomatoes</li>
-                    <li>Onions</li>
-                    <li>Cheese</li>
+                    {props.recipe.ingredients.map((ingredient) => <li key={shortid.generate()}>{ingredient}</li>)}
                 </ul>
             </Panel>
         </Accordion>

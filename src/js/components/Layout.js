@@ -9,7 +9,18 @@ class Layout extends Component {
         super();
 
         this.state = {
-            data: []
+            recipes: [
+                {   
+                    id: 1,
+                    name: "pizza",
+                    ingredients: ["cheese", "tomatoes", "dough"]
+                },
+                {
+                    id: 2,
+                    name: "veggie curry",
+                    ingredients: ["spices", "vegetables"]
+                }
+            ]
         };
 
     }
@@ -17,7 +28,7 @@ class Layout extends Component {
     render() {
         return (
             <div className="wrapper">
-                <RecipeList />
+                <RecipeList recipes={this.state.recipes} />
                 <AddRecipe />
             </div>
         );
