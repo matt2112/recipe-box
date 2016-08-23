@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 
 import { Button, Modal, ControlLabel, FormControl } from 'react-bootstrap';
 
-class Trigger extends Component {
+class AddRecipe extends Component {
   constructor() {
     super();
 
     this.state = {
-      show: false
+      show: false,
+      name: "",
+      ingredients: ""
     }
+  }
+
+  submitNewRecipe() {
+    console.log("nya");
+    this.props.addRecipe(this.state);
   }
 
   render() {
@@ -36,12 +43,25 @@ class Trigger extends Component {
           </Modal.Header>
           <Modal.Body>
             <ControlLabel>Recipe</ControlLabel>
-            <FormControl type="text" placeholder="Enter recipe name" />
+            <FormControl 
+              type="text"
+              placeholder="Enter recipe name"
+              value={this.state.name}
+              onChange={event => this.setState({name: event.target.value}) }
+            />
             <br />
             <ControlLabel>Ingredients</ControlLabel>
-            <FormControl type="text" placeholder="Enter ingredients" />
+            <FormControl
+              type="text"
+              placeholder="Enter,ingredients,separated,by,commas"
+              value={this.state.ingredients}
+              onChange={event => this.setState({ingredients: event.target.value}) }
+               />
           </Modal.Body>
           <Modal.Footer>
+            <Button
+              onClick={() => this.submitNewRecipe()}
+              bsStyle="primary" >Add</Button>
             <Button onClick={close}>Close</Button>
           </Modal.Footer>
         </Modal>
@@ -50,4 +70,4 @@ class Trigger extends Component {
   }
 }
 
-export default Trigger;
+export default AddRecipe;
