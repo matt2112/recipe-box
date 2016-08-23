@@ -2,25 +2,21 @@ import React, { Component } from 'react';
 
 import { Button, Modal, ControlLabel, FormControl } from 'react-bootstrap';
 
-class AddRecipe extends Component {
+class EditRecipe extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       show: false,
-      name: "",
-      ingredients: ""
+      name: props.recipe.name,
+      ingredients: props.recipe.ingredients
     }
 
   }
 
-  submitNewRecipe() {
-    this.props.addRecipe(this.state);
-    this.setState({
-      show: false,
-      name: "",
-      ingredients: ""
-    })
+  changeRecipe() {
+      console.log("change recipe");
+      this.props.editRecipe(this.state);
   }
 
   render() {
@@ -31,11 +27,9 @@ class AddRecipe extends Component {
     return (
       <div>
         <Button
-          bsStyle="primary"
-          bsSize="large"
           onClick={open}
           >
-          Add recipe
+          Edit recipe
         </Button>
 
         <Modal
@@ -45,7 +39,7 @@ class AddRecipe extends Component {
           aria-labelledby="contained-modal-title"
           >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">Add recipe</Modal.Title>
+            <Modal.Title id="contained-modal-title">Edit recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <ControlLabel>Recipe</ControlLabel>
@@ -67,8 +61,8 @@ class AddRecipe extends Component {
           <Modal.Footer>
             <Button
               type="submit"
-              onClick={() => this.submitNewRecipe() }
-              bsStyle="primary" >Add</Button>
+              onClick={() => this.changeRecipe() }
+              bsStyle="primary" >Edit</Button>
             <Button onClick={close}>Close</Button>
           </Modal.Footer>
         </Modal>
@@ -77,4 +71,4 @@ class AddRecipe extends Component {
   }
 }
 
-export default AddRecipe;
+export default EditRecipe;

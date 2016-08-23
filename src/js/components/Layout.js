@@ -21,7 +21,8 @@ class Layout extends Component {
                     name: "veggie curry",
                     ingredients: ["spices", "vegetables"]
                 }
-            ]
+            ],
+            editMode: false
         };
 
     }
@@ -34,6 +35,12 @@ class Layout extends Component {
         let newData = this.state.recipes.slice();
         newData.push(recipe);
         this.setState({recipes: newData});
+    }
+
+    editRecipe(recipe) {
+        // let idx = this.getIndex(recipe.props.recipe.id);
+        // console.log(idx);
+        console.log(recipe);
     }
 
     getIndex(recipe) {
@@ -56,7 +63,11 @@ class Layout extends Component {
     render() {
         return (
             <div className="wrapper">
-                <RecipeList recipes={this.state.recipes} deleteRecipe={this.deleteRecipe.bind(this) } />
+                <RecipeList
+                    recipes={this.state.recipes}
+                    deleteRecipe={this.deleteRecipe.bind(this) } 
+                    editRecipe={this.editRecipe.bind(this) }
+                />
                 <AddRecipe addRecipe={this.addRecipe.bind(this)} />
             </div>
         );

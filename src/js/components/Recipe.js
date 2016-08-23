@@ -2,6 +2,8 @@ import React from 'react';
 import { Accordion, Button, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
 import shortid from 'shortid';
 
+import EditRecipe from './EditRecipe';
+
 const Recipe = (props) => {
     return (
         <Accordion className="accordion">
@@ -11,8 +13,12 @@ const Recipe = (props) => {
                         <ListGroupItem key={shortid.generate()}>{ingredient}</ListGroupItem>
                     )}
                 </ListGroup>
-                <Button bsStyle="danger" onClick={() => props.deleteRecipe({props})}>Delete recipe</Button>
-                <Button>Edit recipe</Button>
+                <Button
+                    bsStyle="danger"
+                    onClick={() => props.deleteRecipe({props})}>Delete recipe</Button>
+                <EditRecipe
+                    recipe={props.recipe}
+                    editRecipe={() => props.editRecipe()}>Edit recipe</EditRecipe>
             </Panel>
         </Accordion>
     )

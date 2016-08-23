@@ -6,7 +6,7 @@ const RecipeList = (props) => {
     return (
         <div className="recipe-list">
             {props.recipes.map((recipe) => 
-                <Recipe key={recipe.id} recipe={recipe} deleteRecipe={props.deleteRecipe} />
+                <Recipe key={recipe.id} recipe={recipe} deleteRecipe={props.deleteRecipe} editRecipe={props.editRecipe} />
             )}
         </div>
     )
