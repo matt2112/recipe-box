@@ -9,19 +9,22 @@ const Recipe = (props) => {
         <Accordion className="accordion">
             <Panel  bsStyle="warning" header={props.recipe.name} eventKey="1">
                 <ListGroup className="list">
-                    {props.recipe.ingredients.map((ingredient) => 
-                        <ListGroupItem key={shortid.generate()}>{ingredient}</ListGroupItem>
-                    )}
+                    {props.recipe.ingredients.map((ingredient) =>
+                        <ListGroupItem key={shortid.generate() }>{ingredient}</ListGroupItem>
+                    ) }
                 </ListGroup>
-                <Button
-                    bsStyle="danger"
-                    onClick={() => props.deleteRecipe({props})}>Delete recipe</Button>
-                <ModalButton
-                    name={"Edit Recipe"}
-                    style="default"
-                    mode="edit"
-                    editRecipe={props.editRecipe}
-                    recipe={props.recipe} />
+                <div className="btns-right">
+                    <Button
+                        bsStyle="danger"
+                        onClick={() => props.deleteRecipe({ props }) }>Delete recipe</Button>
+                    <ModalButton
+                        className="btn-right"
+                        name={"Edit Recipe"}
+                        style="default"
+                        mode="edit"
+                        editRecipe={props.editRecipe}
+                        recipe={props.recipe} />
+                </div>
             </Panel>
         </Accordion>
     )

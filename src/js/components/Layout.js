@@ -57,6 +57,7 @@ class Layout extends Component {
         if (typeof recipe.ingredients === "string") {
             newData[idx].ingredients = recipe.ingredients.split(",");
         }
+        localStorage.setItem("recipes", JSON.stringify(newData));
         this.setState({ recipes: newData });
     }
 
@@ -74,6 +75,7 @@ class Layout extends Component {
         let idx = this.getIndex(recipe.props.recipe.id);
         let newData = this.state.recipes.slice();
         newData.splice(idx, 1);
+        localStorage.setItem("recipes", JSON.stringify(newData));
         this.setState({ recipes: newData });
     }
 
@@ -85,21 +87,30 @@ class Layout extends Component {
     render() {
         return (
             <div className="wrapper">
-                <RecipeList
-                    recipes={this.state.recipes}
-                    deleteRecipe={this.deleteRecipe.bind(this) }
-                    editRecipe={this.editRecipe.bind(this) } />
-                <ModalButton
-                    name="Add Recipe"
-                    style="primary"
-                    size="large"
-                    mode="new"
-                    addRecipe={this.addRecipe.bind(this) }
-                    recipe={{ id: null, name: "", ingredients: "" }} />
-                <Button
-                    bsStyle="danger"
-                    bsSize="large"
-                    onClick={this.reset.bind(this)}>Reset</Button>
+                <h1>Recipe Box</h1>
+                <div className="main">
+                    <RecipeList
+                        recipes={this.state.recipes}
+                        deleteRecipe={this.deleteRecipe.bind(this) }
+                        editRecipe={this.editRecipe.bind(this) } />
+                    <div className="btns-left">
+                        <ModalButton
+                            name="Add Recipe"
+                            style="primary"
+                            size="large"
+                            mode="new"
+                            addRecipe={this.addRecipe.bind(this) }
+                            recipe={{ id: null, name: "", ingredients: "" }} />
+                        <Button
+                            bsStyle="danger"
+                            bsSize="large"
+                            onClick={this.reset.bind(this) }>Reset
+                        </Button>
+                    </div>
+                </div>
+                <footer className="footer">
+                    Coded by <a href="https://github.com/matt2112" target="_blank">Matt Lewis</a>
+                </footer>
             </div>
         );
     }

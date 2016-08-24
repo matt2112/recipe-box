@@ -40,7 +40,13 @@ class ModalButton extends Component {
 
         return (
             <div>
-                <Button onClick={open} bsStyle={this.props.style} bsSize={this.props.size}>{this.props.name}</Button>
+                <Button
+                    onClick={open}
+                    bsStyle={this.props.style}
+                    bsSize={this.props.size}
+                    >
+                    {this.props.name}
+                </Button>
 
                 <Modal
                     show={this.state.show}
@@ -61,7 +67,7 @@ class ModalButton extends Component {
                                 let recipe = this.state.recipe;
                                 recipe.name = event.target.value;
                                 this.setState({ recipe: recipe });
-                             }}
+                            } }
                             />
                         <br />
                         <ControlLabel>Ingredients</ControlLabel>
@@ -73,15 +79,15 @@ class ModalButton extends Component {
                                 let recipe = this.state.recipe;
                                 recipe.ingredients = event.target.value;
                                 this.setState({ recipe: recipe });
-                             }}
+                            } }
                             />
                     </Modal.Body>
                     <Modal.Footer>
+                        <Button onClick={close}>Close</Button>
                         <Button
                             type="submit"
                             onClick={() => this.submit() }
                             bsStyle="primary" >Submit</Button>
-                        <Button onClick={close}>Close</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

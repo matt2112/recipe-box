@@ -1,8 +1,24 @@
 $black: #222;
 
-.wrapper {
-    margin: 0 auto;
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: $black;
+    margin: 20px;
+}
+
+.main {
     max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
 }
 
 .recipe-list {
@@ -14,4 +30,25 @@ $black: #222;
 }
 .list {
     cursor: default;
+}
+
+.footer {
+    text-align: center;
+	width: 100%;
+    position: absolute;
+    bottom: 10px;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.btns-left .btn {
+    float: left;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.btns-right .btn {
+    float: right !important;
 }
