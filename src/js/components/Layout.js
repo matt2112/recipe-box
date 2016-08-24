@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 
-import AddRecipe from './AddRecipe';
+import ModalButton from './ModalButton';
 import RecipeList from './RecipeList';
 
 class Layout extends Component {
@@ -69,7 +69,7 @@ class Layout extends Component {
                     deleteRecipe={this.deleteRecipe.bind(this) } 
                     editRecipe={this.editRecipe.bind(this) }
                 />
-                <AddRecipe addRecipe={this.addRecipe.bind(this)} />
+                <ModalButton addRecipe={this.addRecipe.bind(this)} />
             </div>
         );
     }
