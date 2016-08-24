@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import { Button } from 'react-bootstrap';
 
 import ModalButton from './ModalButton';
 import RecipeList from './RecipeList';
@@ -10,20 +11,31 @@ class Layout extends Component {
         super();
 
         this.state = {
-            recipes: [
+            default: [
                 {
                     id: 101,
                     name: "pizza",
-                    ingredients: ["cheese", "tomatoes", "dough"]
+                    ingredients: ["cheese", "tomato sauce", "pizza dough"]
                 },
                 {
                     id: 42,
                     name: "veggie curry",
-                    ingredients: ["spices", "vegetables"]
+                    ingredients: ["spices", "vegetables", "rice"]
                 }
-            ],
-            editMode: false
+            ]
         };
+
+        if (localStorage.getItem("recipes")) {
+            this.state = {
+                default: this.state.default,
+                recipes: JSON.parse(localStorage.getItem("recipes"))
+            };
+        } else {
+            this.state = {
+                default: this.state.default,
+                recipes: this.state.default
+            };
+        }
 
     }
 
@@ -34,6 +46,7 @@ class Layout extends Component {
         recipe = { id, name, ingredients };
         let newData = this.state.recipes.slice();
         newData.push(recipe);
+        localStorage.setItem("recipes", JSON.stringify(newData));
         this.setState({ recipes: newData });
     }
 
@@ -64,6 +77,11 @@ class Layout extends Component {
         this.setState({ recipes: newData });
     }
 
+    reset() {
+        this.setState({ recipes: this.state.default });
+        localStorage.removeItem("recipes");
+    }
+
     render() {
         return (
             <div className="wrapper">
@@ -78,6 +96,10 @@ class Layout extends Component {
                     mode="new"
                     addRecipe={this.addRecipe.bind(this) }
                     recipe={{ id: null, name: "", ingredients: "" }} />
+                <Button
+                    bsStyle="danger"
+                    bsSize="large"
+                    onClick={this.reset.bind(this)}>Reset</Button>
             </div>
         );
     }
