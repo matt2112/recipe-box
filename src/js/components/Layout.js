@@ -38,9 +38,10 @@ class Layout extends Component {
     }
 
     editRecipe(recipe) {
-        // let idx = this.getIndex(recipe.props.recipe.id);
-        // console.log(idx);
-        console.log(recipe);
+        let idx = this.getIndex(recipe.id);
+        let newData = this.state.recipes.slice();
+        newData[idx].ingredients = recipe.ingredients.split(",");
+        this.setState({recipes: newData});
     }
 
     getIndex(recipe) {

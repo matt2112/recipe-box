@@ -8,6 +8,7 @@ class EditRecipe extends Component {
 
     this.state = {
       show: false,
+      id: props.recipe.id,
       name: props.recipe.name,
       ingredients: props.recipe.ingredients
     }
@@ -15,8 +16,8 @@ class EditRecipe extends Component {
   }
 
   changeRecipe() {
-      console.log("change recipe");
       this.props.editRecipe(this.state);
+      this.setState({show: false});
   }
 
   render() {

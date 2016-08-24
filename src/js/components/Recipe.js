@@ -18,7 +18,7 @@ const Recipe = (props) => {
                     onClick={() => props.deleteRecipe({props})}>Delete recipe</Button>
                 <EditRecipe
                     recipe={props.recipe}
-                    editRecipe={() => props.editRecipe()}>Edit recipe</EditRecipe>
+                    editRecipe={props.editRecipe}>Edit recipe</EditRecipe>
             </Panel>
         </Accordion>
     )
