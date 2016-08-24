@@ -16,12 +16,14 @@ const Recipe = (props) => {
                 <Button
                     bsStyle="danger"
                     onClick={() => props.deleteRecipe({props})}>Delete recipe</Button>
-                <EditRecipe
-                    recipe={props.recipe}
-                    editRecipe={props.editRecipe}>Edit recipe</EditRecipe>
+
             </Panel>
         </Accordion>
     )
 }
 
 export default Recipe;
+
+                // <EditRecipe
+                //     recipe={props.recipe}
+                //     editRecipe={props.editRecipe}>Edit recipe</EditRecipe>

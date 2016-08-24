@@ -31,17 +31,17 @@ class Layout extends Component {
         let id = shortid.generate();
         let name = recipe.name;
         let ingredients = recipe.ingredients.split(",");
-        recipe = {id, name, ingredients};
+        recipe = { id, name, ingredients };
         let newData = this.state.recipes.slice();
         newData.push(recipe);
-        this.setState({recipes: newData});
+        this.setState({ recipes: newData });
     }
 
     editRecipe(recipe) {
         let idx = this.getIndex(recipe.id);
         let newData = this.state.recipes.slice();
         newData[idx].ingredients = recipe.ingredients.split(",");
-        this.setState({recipes: newData});
+        this.setState({ recipes: newData });
     }
 
     getIndex(recipe) {
@@ -66,10 +66,13 @@ class Layout extends Component {
             <div className="wrapper">
                 <RecipeList
                     recipes={this.state.recipes}
-                    deleteRecipe={this.deleteRecipe.bind(this) } 
-                    editRecipe={this.editRecipe.bind(this) }
-                />
-                <ModalButton addRecipe={this.addRecipe.bind(this)} />
+                    deleteRecipe={this.deleteRecipe.bind(this) }
+                    editRecipe={this.editRecipe.bind(this) } />
+                <ModalButton
+                    name={"Add Recipe"}
+                    mode="new"
+                    addRecipe={this.addRecipe.bind(this) }
+                    recipe={{ id: null, name: "", ingredients: "" }} />
             </div>
         );
     }

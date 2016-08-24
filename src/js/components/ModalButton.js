@@ -7,24 +7,28 @@ class ModalButton extends Component {
         super(props);
 
         this.state = {
+            mode: props.mode,
             show: false,
-            id: props.recipe.id,
-            name: props.recipe.name,
-            ingredients: props.recipe.ingredients
+            recipe: {
+                id: props.recipe.id,
+                name: props.recipe.name,
+                ingredients: props.recipe.ingredients
+            }
         }
-
     }
 
     submit() {
         if (this.props.mode === "new") {
-            this.props.addRecipe(this.state);
+            this.props.addRecipe(this.state.recipe);
             this.setState({
                 show: false,
-                name: "",
-                ingredients: ""
+                recipe: {
+                    name: "",
+                    ingredients: ""
+                }
             })
         } else if (this.props.mode === "edit") {
-            this.props.editRecipe(this.state);
+            this.props.editRecipe(this.state.recipe);
             this.setState({ show: false });
         }
     }
@@ -32,15 +36,11 @@ class ModalButton extends Component {
     render() {
 
         let open = () => this.setState({ show: true });
-        let close = () => this.setState({ show: false, name: "", ingredients: "" });
+        let close = () => this.setState({ show: false, recipe: { name: this.props.recipe.name, ingredients: this.props.recipe.ingredients } });
 
         return (
             <div>
-                <Button
-                    onClick={open}
-                    >
-                    Edit recipe
-                </Button>
+                <Button onClick={open} bsStyle="primary" bsSize="large">{this.props.name}</Button>
 
                 <Modal
                     show={this.state.show}
@@ -49,30 +49,38 @@ class ModalButton extends Component {
                     aria-labelledby="contained-modal-title"
                     >
                     <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title">Edit recipe</Modal.Title>
+                        <Modal.Title id="contained-modal-title">{this.props.name}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <ControlLabel>Recipe</ControlLabel>
                         <FormControl
                             type="text"
                             placeholder="Enter recipe name"
-                            value={this.state.name}
-                            onChange={event => this.setState({ name: event.target.value }) }
+                            value={this.state.recipe.name}
+                            onChange={event => {
+                                let recipe = this.state.recipe;
+                                recipe.name = event.target.value;
+                                this.setState({ recipe: recipe });
+                             }}
                             />
                         <br />
                         <ControlLabel>Ingredients</ControlLabel>
                         <FormControl
                             type="text"
                             placeholder="Enter,ingredients,separated,by,commas"
-                            value={this.state.ingredients}
-                            onChange={event => this.setState({ ingredients: event.target.value }) }
+                            value={this.state.recipe.ingredients}
+                            onChange={event => {
+                                let recipe = this.state.recipe;
+                                recipe.ingredients = event.target.value;
+                                this.setState({ recipe: recipe });
+                             }}
                             />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button
                             type="submit"
-                            onClick={() => this.changeRecipe() }
-                            bsStyle="primary" >Edit</Button>
+                            onClick={() => this.submit() }
+                            bsStyle="primary" >Submit</Button>
                         <Button onClick={close}>Close</Button>
                     </Modal.Footer>
                 </Modal>
