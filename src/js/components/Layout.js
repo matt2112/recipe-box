@@ -40,7 +40,10 @@ class Layout extends Component {
     editRecipe(recipe) {
         let idx = this.getIndex(recipe.id);
         let newData = this.state.recipes.slice();
-        newData[idx].ingredients = recipe.ingredients.split(",");
+        newData[idx].name = recipe.name;
+        if (typeof recipe.ingredients === "string") {
+            newData[idx].ingredients = recipe.ingredients.split(",");
+        }
         this.setState({ recipes: newData });
     }
 
@@ -69,7 +72,9 @@ class Layout extends Component {
                     deleteRecipe={this.deleteRecipe.bind(this) }
                     editRecipe={this.editRecipe.bind(this) } />
                 <ModalButton
-                    name={"Add Recipe"}
+                    name="Add Recipe"
+                    style="primary"
+                    size="large"
                     mode="new"
                     addRecipe={this.addRecipe.bind(this) }
                     recipe={{ id: null, name: "", ingredients: "" }} />

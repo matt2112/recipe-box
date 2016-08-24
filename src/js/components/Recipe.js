@@ -2,7 +2,7 @@ import React from 'react';
 import { Accordion, Button, ListGroup, ListGroupItem, Panel } from 'react-bootstrap';
 import shortid from 'shortid';
 
-import EditRecipe from './EditRecipe';
+import ModalButton from './ModalButton';
 
 const Recipe = (props) => {
     return (
@@ -16,14 +16,15 @@ const Recipe = (props) => {
                 <Button
                     bsStyle="danger"
                     onClick={() => props.deleteRecipe({props})}>Delete recipe</Button>
-
+                <ModalButton
+                    name={"Edit Recipe"}
+                    style="default"
+                    mode="edit"
+                    editRecipe={props.editRecipe}
+                    recipe={props.recipe} />
             </Panel>
         </Accordion>
     )
 }
 
 export default Recipe;
-
-                // <EditRecipe
-                //     recipe={props.recipe}
-                //     editRecipe={props.editRecipe}>Edit recipe</EditRecipe>

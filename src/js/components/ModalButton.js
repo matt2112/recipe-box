@@ -36,11 +36,11 @@ class ModalButton extends Component {
     render() {
 
         let open = () => this.setState({ show: true });
-        let close = () => this.setState({ show: false, recipe: { name: this.props.recipe.name, ingredients: this.props.recipe.ingredients } });
+        let close = () => this.setState({ show: false, recipe: { id: this.props.recipe.id, name: this.props.recipe.name, ingredients: this.props.recipe.ingredients } });
 
         return (
             <div>
-                <Button onClick={open} bsStyle="primary" bsSize="large">{this.props.name}</Button>
+                <Button onClick={open} bsStyle={this.props.style} bsSize={this.props.size}>{this.props.name}</Button>
 
                 <Modal
                     show={this.state.show}
