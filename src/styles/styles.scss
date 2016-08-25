@@ -1,4 +1,7 @@
 $black: #222;
+$green: #009933;
+
+@import url(https://fonts.googleapis.com/css?family=Alegreya:400,700);
 
 html {
     min-height: 100%;
@@ -6,15 +9,20 @@ html {
 }
 
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Alegreya', serif;
     color: $black;
-    margin: 20px;
+    background-image: url("kitchen-background.jpg");
+    background-size: cover;
 }
 
 .main {
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
+    border: {
+        left: 20px solid transparent;
+        right: 20px solid transparent;
+    }
 }
 
 h1 {
@@ -23,6 +31,9 @@ h1 {
 
 .recipe-list {
     border: 2px solid $black;
+    border-radius: 5px;
+    background-color: $green;
+    padding: 10px;
 }
 
 .accordion {
@@ -34,21 +45,38 @@ h1 {
 
 .footer {
     text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
 	width: 100%;
     position: absolute;
     bottom: 10px;
+}
+
+.footer a {
+    color: #444;
 }
 
 .btn {
     margin: 5px;
 }
 
-.btns-left .btn {
-    float: left;
+.btn-bottom {
     position: relative;
     margin-bottom: 50px;
 }
 
-.btns-right .btn {
-    float: right !important;
+.btn-left {
+    float: left;
+}
+
+.btn-right {
+    float: right;
+}
+
+.btn-left .btn-position {
+    float: left;
+}
+
+.btn-right .btn-position {
+    float: right;
 }

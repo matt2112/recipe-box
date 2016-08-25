@@ -93,15 +93,18 @@ class Layout extends Component {
                         recipes={this.state.recipes}
                         deleteRecipe={this.deleteRecipe.bind(this) }
                         editRecipe={this.editRecipe.bind(this) } />
-                    <div className="btns-left">
+                    <div>
                         <ModalButton
                             name="Add Recipe"
+                            className="btn-bottom"
+                            position={"btn-left"}
                             style="primary"
                             size="large"
                             mode="new"
                             addRecipe={this.addRecipe.bind(this) }
                             recipe={{ id: null, name: "", ingredients: "" }} />
                         <Button
+                            className="btn-left btn-bottom"
                             bsStyle="danger"
                             bsSize="large"
                             onClick={this.reset.bind(this) }>Reset

@@ -39,8 +39,9 @@ class ModalButton extends Component {
         let close = () => this.setState({ show: false, recipe: { id: this.props.recipe.id, name: this.props.recipe.name, ingredients: this.props.recipe.ingredients } });
 
         return (
-            <div>
+            <div className={this.props.position}>
                 <Button
+                    className="btn-position"
                     onClick={open}
                     bsStyle={this.props.style}
                     bsSize={this.props.size}
@@ -83,8 +84,9 @@ class ModalButton extends Component {
                             />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={close}>Close</Button>
+                        <Button className="btn-right" onClick={close}>Close</Button>
                         <Button
+                            className="btn-right"
                             type="submit"
                             onClick={() => this.submit() }
                             bsStyle="primary" >Submit</Button>
