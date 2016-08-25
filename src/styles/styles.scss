@@ -36,11 +36,23 @@ h1 {
     padding: 10px;
 }
 
-.accordion {
-    cursor: pointer;
+.panel {
+    border: 0;
 }
-.list {
-    cursor: default;
+
+.panel-heading {
+    border: 1px solid black !important;
+    background-color: #70db70 !important;
+}
+
+.panel-title a {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.panel-body {
+    background-color: #145214;
+    border: 0 !important;
 }
 
 .footer {
@@ -70,13 +82,5 @@ h1 {
 }
 
 .btn-right {
-    float: right;
-}
-
-.btn-left .btn-position {
-    float: left;
-}
-
-.btn-right .btn-position {
     float: right;
 }

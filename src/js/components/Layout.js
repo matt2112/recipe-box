@@ -14,13 +14,13 @@ class Layout extends Component {
             default: [
                 {
                     id: 101,
-                    name: "pizza",
-                    ingredients: ["cheese", "tomato sauce", "pizza dough"]
+                    name: "Pizza",
+                    ingredients: ["pizza dough", "tomato sauce", "mozzarella cheese"]
                 },
                 {
                     id: 42,
-                    name: "veggie curry",
-                    ingredients: ["spices", "vegetables", "rice"]
+                    name: "Veggie curry",
+                    ingredients: ["vegetables", "spices", "rice"]
                 }
             ]
         };
